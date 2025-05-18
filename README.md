@@ -1,0 +1,2 @@
+# BAYMAG
+Mossel Bay Magazine

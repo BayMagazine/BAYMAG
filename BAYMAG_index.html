@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BAYMAG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="assets/manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log("Service Worker Registered"));
+    }
+  </script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f8; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #000; color: #fff; }
+    header img { height: 50px; }
+    .issue-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
+    .issue-card { background-color: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; cursor: pointer; }
+    .issue-card:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.jpg" alt="BAYMAG Logo">
+  </header>
+
+  <div class="issue-list" id="issue-list"></div>
+
+  <footer>
+    <p>&copy; 2025 BAYMAG - All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const issues = ['issue1', 'issue2'];
+
+    function loadIssues() {
+      const list = document.getElementById('issue-list');
+      list.innerHTML = '';
+
+      issues.forEach(issue => {
+        const card = document.createElement('div');
+        card.className = 'issue-card';
+        card.innerHTML = `<img src="assets/${issue}/image1.jpg" alt="${issue}"><p class='issue-title'>${issue.toUpperCase()}</p>`;
+        list.appendChild(card);
+      });
+    }
+
+    loadIssues();
+  </script>
+</body>
+</html>
